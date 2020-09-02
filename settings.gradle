@@ -1,0 +1,4 @@
+rootProject.name = 'api-automation-draft'
+include 'rest-assured-module'
+include 'retrofit-module'
+

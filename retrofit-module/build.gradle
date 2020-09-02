@@ -1,0 +1,7 @@
+ext {
+    retrofitVersion = "2.9.0"
+}
+
+dependencies {
+    compile group: 'com.squareup.retrofit2', name: 'retrofit', version: "$retrofitVersion"
+}

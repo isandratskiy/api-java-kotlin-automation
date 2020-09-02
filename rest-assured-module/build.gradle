@@ -1,0 +1,7 @@
+ext {
+    restAssuredVersion = "4.3.1"
+}
+
+dependencies {
+    compile group: 'io.rest-assured', name: 'rest-assured', version: "$restAssuredVersion"
+}
