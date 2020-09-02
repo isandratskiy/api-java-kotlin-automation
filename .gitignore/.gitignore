@@ -1,0 +1,12 @@
+.idea
+.gradle
+**/build
+**/target
+**/test-output
+**/out
+*.iml
+*.ipr
+*.iws
+*logger.*
+*out/*
+**/lombok.config
