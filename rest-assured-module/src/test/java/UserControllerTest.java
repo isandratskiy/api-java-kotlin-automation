@@ -2,6 +2,7 @@ import api.client.ApiClient;
 import api.controller.UserController;
 import entities.request.User;
 import extension.ApiClientResolver;
+import extension.SetupExtension;
 import extension.UserResolver;
 import io.restassured.response.ResponseOptions;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,7 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@ExtendWith({ApiClientResolver.class, UserResolver.class})
+@ExtendWith({ApiClientResolver.class, UserResolver.class, SetupExtension.class})
 public class UserControllerTest {
     private UserController userController;
 

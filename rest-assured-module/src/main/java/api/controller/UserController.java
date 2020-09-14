@@ -1,20 +1,18 @@
 package api.controller;
 
-import api.operation.RegisterUserOperation;
-import io.restassured.builder.RequestSpecBuilder;
+import api.client.Configuration;
+import api.operation.RegisterOperation;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class UserController {
-    private final RequestSpecBuilder reqSpec;
+    private final Configuration configuration;
 
-    public static UserController user(RequestSpecBuilder reqSpec) {
-        return new UserController(reqSpec);
+    public static UserController user(Configuration configuration) {
+        return new UserController(configuration);
     }
 
-    private UserController(RequestSpecBuilder reqSpec) {
-        this.reqSpec = reqSpec;
-    }
-
-    public RegisterUserOperation createUser() {
-        return new RegisterUserOperation(this.reqSpec);
+    public RegisterOperation createUser() {
+        return new RegisterOperation(this.configuration);
     }
 }
