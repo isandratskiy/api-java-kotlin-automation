@@ -1,0 +1,16 @@
+name: Run UI-Automation Tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Microservices-Demo Project
+        uses: actions/checkout@master
+        with:
+          repository: microservices-demo/microservices-demo
+        run: ls
+
+      - name: Clone Test Project
+      - uses: actions/checkout@v1
