@@ -10,6 +10,8 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: microservices-demo/microservices-demo
+
+      - name: Test
         run: ls
 
       - name: Clone Test Project
