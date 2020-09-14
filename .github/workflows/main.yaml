@@ -1,4 +1,4 @@
-name: Run UI-Automation Tests
+name: Run Integration tests
 
 on: [push]
 
