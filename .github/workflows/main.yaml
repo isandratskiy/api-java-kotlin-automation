@@ -5,18 +5,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout tools repo
+      - name: Checkout Microservices-Demo Project
         uses: actions/checkout@v2
         with:
           repository: microservices-demo/microservices-demo
           path: microservices-demo
 
-      - name: Test
+      - name: Run Infrastrucation
         run: docker-compose -f microservices-demo/deploy/docker-compose/docker-compose.yml up -d
 
-      - name: Clone Test Project
+      - name: Checkout Test Project
         uses: actions/checkout@v2
 
       - name: Test
-        run: |
-          ls
+        run: ./gradlew clean test
