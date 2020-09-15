@@ -11,7 +11,7 @@ jobs:
           repository: microservices-demo/microservices-demo
           path: microservices-demo
 
-      - name: Run Infrastrucation
+      - name: Run Infrastructure
         run: docker-compose -f microservices-demo/deploy/docker-compose/docker-compose.yml up -d
 
       - name: Checkout Test Project
