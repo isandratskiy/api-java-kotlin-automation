@@ -33,7 +33,7 @@ subprojects {
 
     tasks.withType(Test) {
         testLogging {
-            showStandardStreams = false
+            showStandardStreams = true
             events "passed", "failed"
             exceptionFormat = "full"
             displayGranularity = 4
