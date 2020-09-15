@@ -1,7 +1,6 @@
 name: Run Integration tests
-
-on: [push]
-
+'on':
+  - push
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -17,7 +16,6 @@ jobs:
 
       - name: Clone Test Project
         uses: actions/checkout@v2
-        path: api-automation-draft
 
       - name: Test1
         run: ls
