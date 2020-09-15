@@ -12,7 +12,11 @@ jobs:
           path: microservices-demo
 
       - name: Test
-        run: ls
+        run: |
+          ls
+          cd microservices-demo
+          ls
+          docker-compose -f deploy/docker-compose/docker-compose.yml up -d
 
       - name: Clone Test Project
         uses: actions/checkout@v2
