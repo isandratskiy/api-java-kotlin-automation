@@ -13,10 +13,11 @@ public class RegisterOperation extends OperationHandler {
         super(configuration);
     }
 
-    public <T> T execute(Function<Response, T> handler) {
+    @Override
+    public <T> T execute(Function<Response, T> function) {
         var response = post(REQ_URI);
-        cookies.putAll(response.cookies());
-        return handler.apply(response);
+        setCookies(response.getCookies());
+        return function.apply(response);
     }
 
     public RegisterOperation body(User body) {

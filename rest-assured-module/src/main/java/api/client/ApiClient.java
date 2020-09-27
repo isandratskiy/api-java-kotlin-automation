@@ -1,17 +1,28 @@
 package api.client;
 
+import api.controller.CartController;
+import api.controller.CatalogueController;
 import api.controller.UserController;
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+import static api.client.Configuration.config;
+
 public class ApiClient {
-    private final Configuration configuration;
+    public static ApiClient api() {
+        return new ApiClient();
+    }
 
-    public static ApiClient api(Configuration configuration) {
-        return new ApiClient(configuration);
+    private ApiClient() {
     }
 
     public UserController user() {
-        return UserController.user(this.configuration);
+        return UserController.user(config().build());
+    }
+
+    public CatalogueController catalogue() {
+        return CatalogueController.catalogue(config().build());
+    }
+
+    public CartController cart() {
+        return CartController.cart(config().build());
     }
 }

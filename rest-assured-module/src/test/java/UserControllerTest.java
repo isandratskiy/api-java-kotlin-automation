@@ -1,28 +1,26 @@
 import api.client.ApiClient;
-import api.controller.UserController;
 import entities.request.User;
-import extension.ApiClientResolver;
-import extension.SetupExtension;
+import entities.response.UserId;
+import extension.ApiClientInjector;
 import extension.UserResolver;
 import io.restassured.response.ResponseOptions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith({ApiClientResolver.class, UserResolver.class, SetupExtension.class})
-public class UserControllerTest {
-    private UserController userController;
-
-    @BeforeEach
-    void before(ApiClient client) {
-        this.userController = client.user();
-    }
+@ExtendWith({UserResolver.class, ApiClientInjector.class})
+class UserControllerTest {
+    ApiClient api;
 
     @Test
-    void test(User user) {
-        var status = userController.createUser().body(user).execute(ResponseOptions::statusCode);
-        assertEquals(200, status);
+    void shouldRegisterUser(User user) {
+        var response = api.user().createUser()
+                .body(user)
+                .execute(ResponseOptions::thenReturn);
+
+        assertAll(
+                () -> assertEquals(200, response.statusCode()),
+                () -> assertNotNull(response.as(UserId.class).getId()));
     }
 }
