@@ -13,7 +13,8 @@ class UserControllerTest {
 
     @Test
     void shouldRegisterUser(User user) {
-        var response = api.user().createUser()
+        var response = api.user()
+                .createUser()
                 .body(user)
                 .execute(ResponseOptions::thenReturn);
 

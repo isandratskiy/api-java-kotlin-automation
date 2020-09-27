@@ -45,6 +45,6 @@ class CartControllerTest {
                         .get()
                         .getItemId());
 
-        assertEquals(productId, cartProductId);
+        assertEquals(productId, cartProductId, "Product id is not same");
     }
 }
