@@ -2,6 +2,7 @@ package api.controller;
 
 import api.client.Configuration;
 import api.operation.AddProductCartOperation;
+import api.operation.DeleteProductCartOperation;
 import api.operation.GetProductCartOperation;
 import lombok.AllArgsConstructor;
 
@@ -19,6 +20,10 @@ public class CartController {
 
     public GetProductCartOperation getCartProduct() {
         return new GetProductCartOperation(this.configuration);
+    }
+
+    public DeleteProductCartOperation deleteCartProduct() {
+        return new DeleteProductCartOperation(this.configuration);
     }
 
 }

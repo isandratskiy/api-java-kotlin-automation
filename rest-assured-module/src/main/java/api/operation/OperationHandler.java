@@ -55,4 +55,14 @@ public abstract class OperationHandler {
                 .extract()
                 .response();
     }
+
+    protected Response delete(String url) {
+        return given()
+                .spec(reqSpec.build())
+                .delete(url)
+                .then()
+                .spec(respSpec.build())
+                .extract()
+                .response();
+    }
 }
