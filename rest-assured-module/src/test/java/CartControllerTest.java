@@ -14,6 +14,7 @@ import static utils.ObjectMapper.stringAs;
 @BaseSetup
 class CartControllerTest {
     ApiClient api;
+    String productId;
 
     @BeforeEach
     void before(User user) {
@@ -21,11 +22,8 @@ class CartControllerTest {
                 .createUser()
                 .body(user)
                 .execute(ResponseOptions::thenReturn);
-    }
 
-    @Test
-    void shouldAddProductToCart() {
-        var productId = api.catalogue()
+        productId = api.catalogue()
                 .getProducts()
                 .size("5")
                 .execute(response -> stream(stringAs(response, Product[].class))
@@ -37,7 +35,10 @@ class CartControllerTest {
                 .addProduct()
                 .body(new ProductId().setId(productId))
                 .execute(ResponseOptions::thenReturn);
+    }
 
+    @Test
+    void shouldAddProductToCart() {
         var cartProductId = api.cart()
                 .getCartProduct()
                 .execute(response -> stream(stringAs(response, Product[].class))
@@ -50,19 +51,6 @@ class CartControllerTest {
 
     @Test
     void shouldRemoveProductFromCart() {
-        var productId = api.catalogue()
-                .getProducts()
-                .size("5")
-                .execute(response -> stream(stringAs(response, Product[].class))
-                        .findAny()
-                        .get()
-                        .getId());
-
-        api.cart()
-                .addProduct()
-                .body(new ProductId().setId(productId))
-                .execute(ResponseOptions::thenReturn);
-
         api.cart()
                 .deleteCartProduct()
                 .productId(productId)
@@ -72,8 +60,6 @@ class CartControllerTest {
                 .getCartProduct()
                 .execute(response -> (int) stream(stringAs(response, Product[].class)).count());
 
-        assertEquals(0, size);
-
-
+        assertEquals(0, size, "Cart is not empty");
     }
 }
