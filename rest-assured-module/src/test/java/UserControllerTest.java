@@ -1,13 +1,13 @@
 import api.client.ApiClient;
 import entities.request.User;
 import entities.response.UserId;
-import extension.BaseSetup;
+import extension.Setup;
 import io.restassured.response.ResponseOptions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@BaseSetup
+@Setup
 class UserControllerTest {
     ApiClient api;
 

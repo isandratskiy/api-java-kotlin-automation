@@ -1,9 +1,9 @@
 package api.controller;
 
 import api.client.Configuration;
-import api.operation.AddProductCartOperation;
-import api.operation.DeleteProductCartOperation;
-import api.operation.GetProductCartOperation;
+import api.operation.AddProductCartOper;
+import api.operation.DeleteProductCartOper;
+import api.operation.GetProductCartOper;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -14,16 +14,16 @@ public class CartController {
         return new CartController(configuration);
     }
 
-    public AddProductCartOperation addProduct() {
-        return new AddProductCartOperation(this.configuration);
+    public AddProductCartOper addProduct() {
+        return new AddProductCartOper(this.configuration);
     }
 
-    public GetProductCartOperation getCartProduct() {
-        return new GetProductCartOperation(this.configuration);
+    public GetProductCartOper getCartProduct() {
+        return new GetProductCartOper(this.configuration);
     }
 
-    public DeleteProductCartOperation deleteCartProduct() {
-        return new DeleteProductCartOperation(this.configuration);
+    public DeleteProductCartOper deleteCartProduct() {
+        return new DeleteProductCartOper(this.configuration);
     }
 
 }

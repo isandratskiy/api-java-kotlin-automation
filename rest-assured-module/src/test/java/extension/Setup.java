@@ -14,5 +14,5 @@ import static org.junit.jupiter.api.parallel.ExecutionMode.CONCURRENT;
 @Target(ElementType.TYPE)
 @Execution(CONCURRENT)
 @ExtendWith({UserResolver.class, ApiClientInjector.class})
-public @interface BaseSetup {
+public @interface Setup {
 }

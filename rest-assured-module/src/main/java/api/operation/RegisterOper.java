@@ -6,10 +6,10 @@ import io.restassured.response.Response;
 
 import java.util.function.Function;
 
-public class RegisterOperation extends OperationHandler {
+public class RegisterOper extends RequestOperationHandler {
     public static final String REQ_URI = "/register";
 
-    public RegisterOperation(Configuration configuration) {
+    public RegisterOper(Configuration configuration) {
         super(configuration);
     }
 
@@ -20,7 +20,7 @@ public class RegisterOperation extends OperationHandler {
         return function.apply(response);
     }
 
-    public RegisterOperation body(User body) {
+    public RegisterOper body(User body) {
         super.reqSpec.setBody(body);
         return this;
     }

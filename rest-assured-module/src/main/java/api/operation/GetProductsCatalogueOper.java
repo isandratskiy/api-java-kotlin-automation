@@ -5,10 +5,10 @@ import io.restassured.response.Response;
 
 import java.util.function.Function;
 
-public class GetProductsCatalogueOperation extends OperationHandler {
+public class GetProductsCatalogueOper extends RequestOperationHandler {
     public static final String CATALOGUE_URI = "/catalogue?size={size}";
 
-    public GetProductsCatalogueOperation(Configuration configuration) {
+    public GetProductsCatalogueOper(Configuration configuration) {
         super(configuration);
     }
 
@@ -19,7 +19,7 @@ public class GetProductsCatalogueOperation extends OperationHandler {
         return function.apply(response);
     }
 
-    public GetProductsCatalogueOperation size(String size) {
+    public GetProductsCatalogueOper size(String size) {
         super.reqSpec.addPathParam("size", size);
         return this;
     }

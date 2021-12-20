@@ -1,26 +1,27 @@
 package api.operation;
 
 import api.client.Configuration;
+import entities.request.ProductId;
 import io.restassured.response.Response;
 
 import java.util.function.Function;
 
-public class DeleteProductCartOperation extends OperationHandler {
-    public static final String PRODUCT_CART_URI = "/cart/{id}";
+public class AddProductCartOper extends RequestOperationHandler {
+    public static final String CART_URI = "/cart";
 
-    public DeleteProductCartOperation(Configuration configuration) {
+    public AddProductCartOper(Configuration configuration) {
         super(configuration);
     }
 
     @Override
     public <T> T execute(Function<Response, T> function) {
         super.reqSpec.addCookies(getCookies());
-        var response = delete(PRODUCT_CART_URI);
+        var response = post(CART_URI);
         return function.apply(response);
     }
 
-    public DeleteProductCartOperation productId(String id) {
-        super.reqSpec.addPathParam("id", id);
+    public AddProductCartOper body(ProductId id) {
+        super.reqSpec.setBody(id);
         return this;
     }
 }

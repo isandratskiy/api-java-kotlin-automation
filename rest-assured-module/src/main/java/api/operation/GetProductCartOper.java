@@ -5,10 +5,10 @@ import io.restassured.response.Response;
 
 import java.util.function.Function;
 
-public class GetProductCartOperation extends OperationHandler {
+public class GetProductCartOper extends RequestOperationHandler {
     public static final String CARD_URI = "/cart";
 
-    public GetProductCartOperation(Configuration configuration) {
+    public GetProductCartOper(Configuration configuration) {
         super(configuration);
     }
 

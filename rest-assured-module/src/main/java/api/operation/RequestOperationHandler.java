@@ -11,18 +11,16 @@ import java.util.function.Function;
 
 import static io.restassured.RestAssured.given;
 
-public abstract class OperationHandler {
+public abstract class RequestOperationHandler {
     private static final ThreadLocal<Map<String, String>> COOKIES = new ThreadLocal<>();
 
     protected ResponseSpecBuilder respSpec;
     protected RequestSpecBuilder reqSpec;
 
-    public OperationHandler(Configuration configuration) {
+    public RequestOperationHandler(Configuration configuration) {
         this.reqSpec = configuration.getRequestSpecBuilder();
         this.respSpec = configuration.getResponseSpecBuilder();
     }
-
-    public abstract <T> T execute(Function<Response, T> function);
 
     protected String getLoggedCookie() {
         return COOKIES.get().get("logged_in");
@@ -65,4 +63,6 @@ public abstract class OperationHandler {
                 .extract()
                 .response();
     }
+
+    public abstract <T> T execute(Function<Response, T> function);
 }

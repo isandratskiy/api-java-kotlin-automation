@@ -1,7 +1,7 @@
 package api.controller;
 
 import api.client.Configuration;
-import api.operation.RegisterOperation;
+import api.operation.RegisterOper;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -12,7 +12,7 @@ public class UserController {
         return new UserController(configuration);
     }
 
-    public RegisterOperation createUser() {
-        return new RegisterOperation(this.configuration);
+    public RegisterOper createUser() {
+        return new RegisterOper(this.configuration);
     }
 }

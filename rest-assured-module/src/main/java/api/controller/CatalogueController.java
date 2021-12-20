@@ -1,7 +1,7 @@
 package api.controller;
 
 import api.client.Configuration;
-import api.operation.GetProductsCatalogueOperation;
+import api.operation.GetProductsCatalogueOper;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -12,7 +12,7 @@ public class CatalogueController {
         return new CatalogueController(configuration);
     }
 
-    public GetProductsCatalogueOperation getProducts() {
-        return  new GetProductsCatalogueOperation(this.configuration);
+    public GetProductsCatalogueOper getProducts() {
+        return  new GetProductsCatalogueOper(this.configuration);
     }
 }
